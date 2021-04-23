@@ -12,17 +12,17 @@ RSpec.describe 'flights index page' do
 
     within("#flight-#{flight1.id}") do
       expect(page).to have_content(flight1.number)
-      expect(page).to have_content(airline1.id)
+      expect(page).to have_content(airline1.name)
     end
 
     within("#flight-#{flight2.id}") do
       expect(page).to have_content(flight2.number)
-      expect(page).to have_content(airline1.id)
+      expect(page).to have_content(airline1.name)
     end
     
     within("#flight-#{flight3.id}") do
       expect(page).to have_content(flight3.number)
-      expect(page).to have_content(airline2.id)
+      expect(page).to have_content(airline2.name)
     end
   end
 
