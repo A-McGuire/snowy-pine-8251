@@ -91,30 +91,20 @@ RSpec.describe 'flights index page' do
       within("#passenger-#{passenger1.id}") do
         expect(page).to have_content(passenger1.name)
         expect(page).to have_button("Remove Passenger")
+        click_button "Remove Passenger"
+        expect(current_path).to eq('/flights')
       end
-      within("#passenger-#{passenger2.id}") do
-        expect(page).to have_content(passenger2.name)
-        expect(page).to have_button("Remove Passenger")
-      end
-      within("#passenger-#{passenger3.id}") do
-        expect(page).to have_content(passenger3.name)
-        expect(page).to have_button("Remove Passenger")
-      end
+      expect(page).to_not have_content(passenger1.name)
     end
-
+    
     within("#flight-#{flight2.id}") do
       within("#passenger-#{passenger4.id}") do
         expect(page).to have_content(passenger4.name)
         expect(page).to have_button("Remove Passenger")
+        click_button "Remove Passenger"
+        expect(current_path).to eq('/flights')
       end
-      within("#passenger-#{passenger5.id}") do
-        expect(page).to have_content(passenger5.name)
-        expect(page).to have_button("Remove Passenger")
-      end
-      within("#passenger-#{passenger6.id}") do
-        expect(page).to have_content(passenger6.name)
-        expect(page).to have_button("Remove Passenger")
-      end
+      expect(page).to_not have_content(passenger4.name)
     end
   end
 end
