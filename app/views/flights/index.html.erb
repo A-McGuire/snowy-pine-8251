@@ -10,7 +10,7 @@
         <section id="passenger-<%= passenger.id %>">
           <%= passenger.name %>
           <%= button_to "Remove Passenger", "/flights/#{flight.id}", params: {passenger: passenger.id}, method: :delete %>
-        </section>
+        </section><br>
       <% end %>
     </section><br>
   <% end %>
