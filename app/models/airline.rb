@@ -4,6 +4,10 @@ class Airline < ApplicationRecord
   has_many :passengers, through: :passenger_flights
 
   def all_passengers
-    self.passengers.where("passengers.age > ?", 17).select("passengers.*").distinct.order("passengers.age")
+    self.passengers
+        .where("passengers.age > ?", 17)
+        .select("passengers.*")
+        .distinct
+        .order("passengers.age") #ordering so the test passes consistently
   end
 end

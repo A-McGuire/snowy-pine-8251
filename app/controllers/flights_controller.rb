@@ -1,6 +1,6 @@
 class FlightsController < ApplicationController
   def index
-    @flights = Flight.all #TODO view is logic heavy refactor
+    @flights = Flight.all
   end
 
   def destroy
