@@ -9,7 +9,8 @@ RSpec.describe 'airline show page' do
     passenger1 = flight1.passengers.create!(name: "pass1", age:18)
     passenger2 = flight1.passengers.create!(name: "pass2", age:50)
     passenger3 = flight1.passengers.create!(name: "pass3", age:5)
-
+    
+    passenger2 = flight2.passengers.create!(name: "pass2", age:50)
     passenger4 = flight2.passengers.create!(name: "pass4", age:17)
     passenger5 = flight2.passengers.create!(name: "pass5", age:55)
     passenger6 = flight2.passengers.create!(name: "pass6", age:16)
