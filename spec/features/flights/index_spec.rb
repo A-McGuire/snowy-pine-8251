@@ -65,4 +65,56 @@ RSpec.describe 'flights index page' do
       expect(page).to have_content(passenger9.name)
     end
   end
+
+  it 'has a button to remove a passenger next to each passengers name' do
+    airline1 = Airline.create!(name: "Frontier")
+    airline2 = Airline.create!(name: "United")
+    flight1 = airline1.flights.create!(number: 1111, date: "04/01/21", departure_city: "Denver", arrival_city: "New York")
+    flight2 = airline1.flights.create!(number: 2222, date: "04/02/21", departure_city: "LA", arrival_city: "DC")
+    flight3 = airline2.flights.create!(number: 3333, date: "04/03/21", departure_city: "Bozeman", arrival_city: "Denver")
+
+    passenger1 = flight1.passengers.create!(name: "pass1", age:18)
+    passenger2 = flight1.passengers.create!(name: "pass2", age:50)
+    passenger3 = flight1.passengers.create!(name: "pass3", age:5)
+
+    passenger4 = flight2.passengers.create!(name: "pass4", age:17)
+    passenger5 = flight2.passengers.create!(name: "pass5", age:55)
+    passenger6 = flight2.passengers.create!(name: "pass6", age:16)
+
+    passenger7 = flight3.passengers.create!(name: "pass7", age:19)
+    passenger8 = flight3.passengers.create!(name: "pass8", age:12)
+    passenger9 = flight3.passengers.create!(name: "pass9", age:58)
+
+    visit '/flights'
+
+    within("#flight-#{flight1.id}") do
+      within("#passenger-#{passenger1.id}") do
+        expect(page).to have_content(passenger1.name)
+        expect(page).to have_button("Remove Passenger")
+      end
+      within("#passenger-#{passenger2.id}") do
+        expect(page).to have_content(passenger2.name)
+        expect(page).to have_button("Remove Passenger")
+      end
+      within("#passenger-#{passenger3.id}") do
+        expect(page).to have_content(passenger3.name)
+        expect(page).to have_button("Remove Passenger")
+      end
+    end
+
+    within("#flight-#{flight2.id}") do
+      within("#passenger-#{passenger4.id}") do
+        expect(page).to have_content(passenger4.name)
+        expect(page).to have_button("Remove Passenger")
+      end
+      within("#passenger-#{passenger5.id}") do
+        expect(page).to have_content(passenger5.name)
+        expect(page).to have_button("Remove Passenger")
+      end
+      within("#passenger-#{passenger6.id}") do
+        expect(page).to have_content(passenger6.name)
+        expect(page).to have_button("Remove Passenger")
+      end
+    end
+  end
 end
